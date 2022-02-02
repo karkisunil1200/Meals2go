@@ -1,5 +1,6 @@
 import React from "react";
 import { StatusBar as ExpoStatusBar } from "expo-status-bar";
+import styled from "styled-components/native";
 import {
   StatusBar,
   StyleSheet,
@@ -11,33 +12,32 @@ import {
 import { Searchbar } from "react-native-paper";
 import { RestaurantInfoCard } from "../components/restaurant-info.card";
 
+const SafeArea = styled(SafeAreaView)`
+  flex: 1;
+`;
+
+const SearchContainer = styled.View`
+  padding: 16px;
+`;
+
+const RestaurantListContainer = styled.View`
+  padding: 16px;
+  flex: 1;
+  background-color: orange;
+`;
+
 export const RestaurantScreen = () => {
   return (
     <>
-      <SafeAreaView style={styles.container}>
-        <View style={styles.search}>
+      <SafeArea>
+        <SearchContainer>
           <Searchbar placeholder="search.." />
-        </View>
-        <View style={styles.list}>
+        </SearchContainer>
+        <RestaurantListContainer>
           <RestaurantInfoCard />
-        </View>
-      </SafeAreaView>
+        </RestaurantListContainer>
+      </SafeArea>
       <StatusBar style="auto" />
     </>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  search: {
-    padding: 16,
-  },
-
-  list: {
-    padding: 15,
-    flex: 1,
-    backgroundColor: "orange",
-  },
-});
