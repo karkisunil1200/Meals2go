@@ -7,20 +7,13 @@ import {
   View,
   Platform,
 } from "react-native";
-
-const isAndroid = Platform.OS === "andorid";
+import { Searchbar } from "react-native-paper";
+import { RestaurantScreen } from "./src/features/restaurants/screens/restaurants.screens";
 
 export default function App() {
   return (
     <>
-      <SafeAreaView style={{ flex: 1, marginTop: isAndroid ? 50 : 0 }}>
-        <View style={{ padding: 16, backgroundColor: "red" }}>
-          <Text>Our rect native blank canvas </Text>
-        </View>
-        <View style={{ padding: 15, flex: 1, backgroundColor: "blue" }}>
-          <Text>List</Text>
-        </View>
-      </SafeAreaView>
+      <RestaurantScreen />
       <StatusBar style="auto" />
     </>
   );
