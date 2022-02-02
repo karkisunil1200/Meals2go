@@ -9,7 +9,7 @@ import {
   Platform,
 } from "react-native";
 import { Searchbar } from "react-native-paper";
-import { RestaurantInfo } from "../components/restaurant-info.components";
+import { RestaurantInfoCard } from "../components/restaurant-info.card";
 
 export const RestaurantScreen = () => {
   return (
@@ -19,7 +19,7 @@ export const RestaurantScreen = () => {
           <Searchbar placeholder="search.." />
         </View>
         <View style={styles.list}>
-          <RestaurantInfo />
+          <RestaurantInfoCard />
         </View>
       </SafeAreaView>
       <StatusBar style="auto" />
