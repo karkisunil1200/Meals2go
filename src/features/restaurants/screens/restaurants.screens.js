@@ -23,7 +23,7 @@ const SearchContainer = styled.View`
 const RestaurantListContainer = styled.View`
   padding: 16px;
   flex: 1;
-  background-color: orange;
+  background-color: aqua;
 `;
 
 export const RestaurantScreen = () => {
