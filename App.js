@@ -6,16 +6,25 @@ import {
   Oswald_400Regular,
 } from "@expo-google-fonts/oswald";
 import { useFonts as useLato, Lato_400Regular } from "@expo-google-fonts/lato";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
-import {
-  StatusBar,
-  StyleSheet,
-  SafeAreaView,
-  Text,
-  View,
-  Platform,
-} from "react-native";
+import { StatusBar, StyleSheet, Text } from "react-native";
 import { RestaurantScreen } from "./src/features/restaurants/screens/restaurants.screens";
+import { NavigationContainer } from "@react-navigation/native";
+import { SafeArea } from "./src/components/utilities/safe-area.component";
+
+const Tab = createBottomTabNavigator();
+
+const Settings = () => (
+  <SafeArea>
+    <Text>Settings</Text>
+  </SafeArea>
+);
+const Map = () => (
+  <SafeArea>
+    <Text>Map</Text>
+  </SafeArea>
+);
 
 export default function App() {
   const [oswaldLoaded] = useOswald({
@@ -32,7 +41,13 @@ export default function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <RestaurantScreen />
+        <NavigationContainer>
+          <Tab.Navigator>
+            <Tab.Screen name="Home" component={RestaurantScreen} />
+            <Tab.Screen name="Settings" component={Settings} />
+            <Tab.Screen name="Map" component={Map} />
+          </Tab.Navigator>
+        </NavigationContainer>
         <StatusBar style="auto" />
       </ThemeProvider>
     </>

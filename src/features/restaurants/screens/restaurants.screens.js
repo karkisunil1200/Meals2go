@@ -1,13 +1,11 @@
 import React from "react";
 import { StatusBar as ExpoStatusBar } from "expo-status-bar";
 import styled from "styled-components/native";
-import { StatusBar, SafeAreaView, FlatList } from "react-native";
+import { StatusBar, FlatList } from "react-native";
 import { Searchbar } from "react-native-paper";
 import { RestaurantInfoCard } from "../components/restaurant-info.card";
-
-const SafeArea = styled(SafeAreaView)`
-  flex: 1;
-`;
+import { Spacer } from "../../../components/spacer/spacer.component";
+import { SafeArea } from "../../../components/utilities/safe-area.component";
 
 const SearchContainer = styled.View`
   padding: ${(props) => props.theme.space[3]};
@@ -35,7 +33,11 @@ export const RestaurantScreen = () => {
             { name: 11 },
             { name: 12 },
           ]}
-          renderItem={() => <RestaurantInfoCard />}
+          renderItem={() => (
+            <Spacer position="bottom" size="large">
+              <RestaurantInfoCard />
+            </Spacer>
+          )}
           keyExtractor={(item) => item.name}
           contentContainerStyle={{ padding: 16 }}
         />
