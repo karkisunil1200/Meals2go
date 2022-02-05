@@ -12,6 +12,7 @@ import { StatusBar, StyleSheet, Text } from "react-native";
 import { RestaurantScreen } from "./src/features/restaurants/screens/restaurants.screens";
 import { NavigationContainer } from "@react-navigation/native";
 import { SafeArea } from "./src/components/utilities/safe-area.component";
+import { Ionicons } from "@expo/vector-icons";
 
 const Tab = createBottomTabNavigator();
 
@@ -42,8 +43,27 @@ export default function App() {
     <>
       <ThemeProvider theme={theme}>
         <NavigationContainer>
-          <Tab.Navigator>
-            <Tab.Screen name="Home" component={RestaurantScreen} />
+          <Tab.Navigator
+            screenOptions={({ route }) => ({
+              tabBarIcon: ({ color, size }) => {
+                let iconName;
+
+                if (route.name === "Restaurant") {
+                  iconName = "md-restaurant";
+                } else if (route.name === "Settings") {
+                  iconName = "md-settings";
+                } else if (route.name === "Map") {
+                  iconName = "md-map";
+                }
+
+                // You can return any component that you like here!
+                return <Ionicons name={iconName} size={size} color={color} />;
+              },
+              tabBarActiveTintColor: "tomato",
+              tabBarInactiveTintColor: "gray",
+            })}
+          >
+            <Tab.Screen name="Restaurant" component={RestaurantScreen} />
             <Tab.Screen name="Settings" component={Settings} />
             <Tab.Screen name="Map" component={Map} />
           </Tab.Navigator>
