@@ -12,6 +12,16 @@ const SearchContainer = styled.View`
   padding: ${(props) => props.theme.space[3]};
 `;
 
+const Loading = styled(ActivityIndicator)`
+  margin-left: -25px;
+`;
+
+const LoadingContainer = styled(View)`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+`;
+
 export const RestaurantScreen = () => {
   const { isLoading, error, restaurants } = useContext(RestaurantsContext);
 
@@ -19,14 +29,9 @@ export const RestaurantScreen = () => {
     <>
       <SafeArea>
         {isLoading && (
-          <View style={{ position: "absolute", top: "50%", left: "50%" }}>
-            <ActivityIndicator
-              size={50}
-              style={{ marginLeft: -25 }}
-              animatiing={true}
-              color={Colors.blue300}
-            />
-          </View>
+          <LoadingContainer>
+            <Loading animatiing={true} color={Colors.blue300} />
+          </LoadingContainer>
         )}
         <SearchContainer>
           <Searchbar placeholder="search.." />
