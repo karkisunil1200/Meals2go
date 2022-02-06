@@ -13,6 +13,7 @@ import { RestaurantScreen } from "./src/features/restaurants/screens/restaurants
 import { NavigationContainer } from "@react-navigation/native";
 import { SafeArea } from "./src/components/utilities/safe-area.component";
 import { Ionicons } from "@expo/vector-icons";
+import { restaurantsRequest } from "./src/services/restaurants/restaurants.service";
 
 const Tab = createBottomTabNavigator();
 
@@ -70,7 +71,6 @@ export default function App() {
             <Tab.Screen name="Map" component={Map} />
           </Tab.Navigator>
         </NavigationContainer>
-        <StatusBar style="auto" />
       </ThemeProvider>
     </>
   );
